@@ -1,5 +1,4 @@
-FROM alpine:3.9
-MAINTAINER Emmanuel Frecon <efrecon@gmail.com>
+FROM alpine:3.16.2
 
 RUN apk --update add openssh
 COPY sshd.sh /usr/local/bin/
