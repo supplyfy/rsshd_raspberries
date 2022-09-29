@@ -1,7 +1,7 @@
 FROM arm32v7/alpine:3.16.2
 
 RUN apk --update add openssh
-COPY sshd.sh /usr/local/bin/
+COPY ./sshd.sh /usr/local/bin/
 
 # Expose the regular ssh port
 EXPOSE 22
