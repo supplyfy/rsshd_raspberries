@@ -31,8 +31,9 @@ VOLUME /etc/ssh/keys
 VOLUME /root/.ssh
 
 ARG user=appuser
-RUN adduser ${user}
+ARG password=apppassword
+RUN adduser ${user} wheel | ${password}
 
-USER ${user}
+USER ${user} 
 
 ENTRYPOINT /usr/local/bin/sshd.sh
