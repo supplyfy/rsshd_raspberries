@@ -34,6 +34,7 @@ ENV USER=diamondbiggersupplychain
 ENV UID=12345
 ENV GID=23456
 
+RUN addgroup -g "$GID" -S "$USER" GROUP
 RUN adduser \
     --disabled-password \
     --gecos "" \
