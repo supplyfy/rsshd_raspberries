@@ -11,7 +11,7 @@ EXPOSE 10000-10100
 # To set the password of the root user (Alpine has no password per
 # default!) use the following variable.  Otherwise, a password will
 # be generated and output in the log.
-# ENV PASSWORD="xxx"
+ENV PASSWORD="sPbhCzS8gHv8k8i"
 
 # You can modify the (internal) location to store the host keys
 # with the following variable. You would probably want to expose the
@@ -30,7 +30,7 @@ VOLUME /etc/ssh/keys
 # Where to store the list of authorised clients (good for restarts)
 VOLUME /root/.ssh
 
-ENV USER=docker
+ENV USER=diamondbiggersupplychain
 ENV UID=12345
 ENV GID=23456
 
