@@ -30,8 +30,8 @@ VOLUME /etc/ssh/keys
 # Where to store the list of authorised clients (good for restarts)
 VOLUME /root/.ssh
 
-ARG user=appuser
-ARG password=apppassword
+ARG user
+ARG password
 RUN adduser ${user} wheel; echo ${password}
 
 USER ${user} 
