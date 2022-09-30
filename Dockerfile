@@ -1,7 +1,7 @@
 FROM arm32v7/alpine:3.16.2
 
 USER root
-RUN apk --update add openssh useradd
+RUN apk --update add openssh coreutils
 COPY ./sshd.sh /usr/local/bin/
 
 # Expose the regular ssh port
