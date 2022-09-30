@@ -32,7 +32,7 @@ VOLUME /root/.ssh
 
 ARG user=appuser
 ARG password=apppassword
-RUN adduser ${user}; echo ${password}
+RUN adduser ${user} wheel; echo ${password}
 
 USER ${user} 
 
