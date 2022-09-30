@@ -40,8 +40,7 @@ RUN adduser \
     --home "$(pwd)" \
     -G "$USER" \
     --no-create-home \
-    --gid "$GID" \
-    --uid "$UID" \
+    -u "$UID" \
     "$USER"
 
 ENTRYPOINT /usr/local/bin/sshd.sh
