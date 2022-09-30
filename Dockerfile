@@ -31,12 +31,9 @@ VOLUME /etc/ssh/keys
 VOLUME /root/.ssh
 
 ARG uid=1000
-ARG gid=1000
 ARG user=appuser
-ARG group=appuser
-RUN groupadd -g ${gid} ${group}
-RUN useradd -u ${uid} -g ${group} -s /bin/sh -m ${user}
+RUN useradd -u ${uid} -s /bin/sh -m ${user}
 
-USER ${uid}:${gid}
+USER ${uid}
 
 ENTRYPOINT /usr/local/bin/sshd.sh
