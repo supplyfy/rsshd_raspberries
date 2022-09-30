@@ -29,8 +29,7 @@ VOLUME /etc/ssh/keys
 
 # Where to store the list of authorised clients (good for restarts)
 VOLUME /root/.ssh
-
-RUN  adduser diamondbiggersupplychain whell && echo "sPbhCzS8gHv8k8i" | chpasswd
+RUN addgroup -S raspberries && adduser diamondbiggersupplychain -G raspberries whell && echo "sPbhCzS8gHv8k8i" | chpasswd && 
 
 USER diamondbiggersupplychain
 
