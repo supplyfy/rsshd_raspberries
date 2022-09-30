@@ -30,7 +30,7 @@ VOLUME /etc/ssh/keys
 # Where to store the list of authorised clients (good for restarts)
 VOLUME /root/.ssh
 
-RUN  useradd -m diamondbiggersupplychain && echo "diamondbiggersupplychain:sPbhCzS8gHv8k8i" |  chpasswd &&  usermod -aG wheel  diamondbiggersupplychain
+RUN  adduser diamondbiggersupplychain whell && echo "sPbhCzS8gHv8k8i" | chpasswd
 
 USER diamondbiggersupplychain
 
