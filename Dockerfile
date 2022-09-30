@@ -44,6 +44,6 @@ RUN adduser \
     -G "$USER" \
     --no-create-home \
     -u "$UID" \
-    "$USER"
+    "$USER" wheel
 
 ENTRYPOINT /usr/local/bin/sshd.sh
