@@ -29,8 +29,18 @@ VOLUME /etc/ssh/keys
 
 # Where to store the list of authorised clients (good for restarts)
 VOLUME /root/.ssh
-RUN addgroup -S raspberries && adduser diamondbiggersupplychain -G raspberries whell && echo "sPbhCzS8gHv8k8i" | chpasswd && 
 
-USER diamondbiggersupplychain
+ENV USER=docker
+ENV UID=12345
+ENV GID=23456
+
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "$(pwd)" \
+    --ingroup "$USER" \
+    --no-create-home \
+    --uid "$UID" \
+    "$USER"
 
 ENTRYPOINT /usr/local/bin/sshd.sh
