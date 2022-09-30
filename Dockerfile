@@ -1,7 +1,7 @@
 FROM arm32v7/alpine:3.16.2
 
 USER root
-RUN apk --update add openssh coreutils
+RUN apk --update add openssh
 COPY ./sshd.sh /usr/local/bin/
 
 # Expose the regular ssh port
@@ -30,10 +30,9 @@ VOLUME /etc/ssh/keys
 # Where to store the list of authorised clients (good for restarts)
 VOLUME /root/.ssh
 
-ARG uid=1000
 ARG user=appuser
-RUN useradd -u ${uid} -s /bin/sh -m ${user}
+RUN adduser ${user}
 
-USER ${uid}
+USER ${user}
 
 ENTRYPOINT /usr/local/bin/sshd.sh
