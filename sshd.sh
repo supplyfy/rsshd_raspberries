@@ -78,10 +78,12 @@ if [ -n "${PASSWORD}" ]; then
     sed -i "s;\#PermitRootLogin .*;PermitRootLogin yes;g" $SDIR/sshd_config
 fi
 
+sed -i "s;\#UsePAM no;UsePAM yes;g" $SDIR/sshd_config
+
 # Fix permissions and access to the .ssh directory (in case it was shared with
 # the host)
-chown root $HOME/.ssh
-chmod 755 $HOME/.ssh
+# chown root $HOME/.ssh
+# chmod 755 $HOME/.ssh
 
 # Absolute path necessary! Pass all remaining arguents to sshd. This enables to
 # override some options through -o, for example.
