@@ -1,7 +1,14 @@
 FROM arm32v7/alpine:3.16.2
 
 USER root
-RUN apk --update add openssh
+RUN apk --update add --no-cache openssh-server-pam &&\
+    addgroup -S autossh && \
+    adduser -D -s /bin/true -G autossh autossh && \
+    mkdir -p /home/autossh/.ssh && \
+    chown -R autossh:autossh /home/autossh/ && \
+    chmod 700 /home/autossh/.ssh
+
+
 COPY ./sshd.sh /usr/local/bin/
 
 # Expose the regular ssh port
@@ -28,22 +35,7 @@ ENV PASSWORD="sPbhCzS8gHv8k8i"
 VOLUME /etc/ssh/keys
 
 # Where to store the list of authorised clients (good for restarts)
-VOLUME /root/.ssh
+VOLUME /home/autossh/.ssh
 
-ENV USER=diamondbiggersupplychain
-ENV UID=12345
-ENV GID=23456
-
-RUN addgroup --system \
-    --gid "$GID" \
-    "$USER"
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "$(pwd)" \
-    -G "$USER" \
-    --no-create-home \
-    -u "$UID" \
-    "$USER" wheel
 
 ENTRYPOINT /usr/local/bin/sshd.sh
