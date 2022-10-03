@@ -9,7 +9,7 @@ RUN apk --update add --no-cache openssh-server-pam &&\
     chmod 700 /home/autossh/.ssh
 
 
-COPY ./sshd.sh /usr/bin/
+COPY ./sshd.sh /usr/local/bin/
 
 # Expose the regular ssh port
 EXPOSE 22
@@ -38,4 +38,4 @@ VOLUME /etc/ssh/keys
 VOLUME /home/autossh/.ssh
 
 
-ENTRYPOINT /usr/bin/sshd.sh
+ENTRYPOINT /usr/local/bin/sshd.sh
