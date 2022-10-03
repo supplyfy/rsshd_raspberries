@@ -87,4 +87,4 @@ chmod 755 $HOME/.ssh
 
 # Absolute path necessary! Pass all remaining arguents to sshd. This enables to
 # override some options through -o, for example.
-/usr/sbin/sshd -f ${SDIR}/sshd_config -D -e "$@"
+./usr/sbin/sshd -f ${SDIR}/sshd_config -D -e "$@"
