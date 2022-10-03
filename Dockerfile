@@ -1,7 +1,7 @@
 FROM arm32v7/alpine:3.16.2
 
 USER root
-RUN apk --update add --no-cache openssh-server-pam &&\
+RUN apk --update add openssh &&\
     addgroup -S autossh && \
     adduser -D -s /bin/true -G autossh autossh && \
     mkdir -p /home/autossh/.ssh && \
